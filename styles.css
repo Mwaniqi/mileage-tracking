@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background: #d1d1d1;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+main {
+  background: #3D3757;
+  border-radius: 2px;
+  max-width: 22em;
+  margin: .5em auto 0 auto;
+  padding: 1em 0;
+  position: relative;
+  box-shadow: 1px 0 2px 0 #70707075,
+              -1px -0 2px 0 #70707075;
+  min-height: 90vh;
+}
+h1, h3, form {
+  text-shadow: 3px 3px 2px #202020;
+}
+h1, header, button, #modal-content, ul {
+  color: #f9f9f9d7;
+}
+h1 {
+  text-align: center;
+}
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #345180;
+}
+button {
+  background: #363636f1;
+  box-shadow: 0px 3px 5px 0 #2020209c;
+  border-radius: 3px;
+  border: 1px solid #f9f9f9d7;
+  cursor: pointer;
+  padding: .5em 1.5em;
+}
+.modal {
+  background-color: rgba(0, 0, 0, .5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s linear .25s, opacity .25s 0s;;
+}
+#modal-content {
+  background-color: rgba(61, 112, 136, 0.5);
+  border-radius: 3px; 
+  padding: 1em.5em;
+  margin-top: -1em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20em;
+}
+.show-modal {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity .25s 0s;
+}
+form {
+  margin: 0 auto;
+}
+form > div {
+  margin-top: 1.5em;
+  display: flex;
+  justify-content: space-around;
+}
+label {
+  display: block;
+  margin: .2em auto .5em auto;
+  text-align: left;
+  padding-top: .5em;  
+}
+input {
+  display: block;
+  height: 30px;
+  width: 70%;
+  padding: .5em;
+  margin: .5em auto;
+  border-radius: 3px;
+  border: none;
+}
+#showData p {
+  margin: .5em 0;
+}
+ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0 .5em;
+  border-bottom: 1px solid #4970ad;
+}
+ul:last-child {
+border-bottom: none;
+}
+ul:nth-child(even) {
+  background: #394763;
+}
+ul:nth-child(odd) {
+  background: #343f54;
+}
+li {
+  list-style: none;
+  width: 50%;
+}
+.edit, .delete {
+  padding: .3em 1.5em;
+  align-self: center;
+  font-size: 12px;
+  text-shadow: 1px 2px 6px #464545;
+}
+.delete {
+  margin-left: auto;
+  background: #a82424;
+}
+small {
+  margin: .25em 0 .25em auto;
+  color: #989898;
+  text-shadow: 4px 3px 6px #202020;
+}
