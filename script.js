@@ -1,16 +1,22 @@
-var addBtn = document.getElementById('addBtn');
-var modal = document.querySelector('.modal');
-var saveBtn = document.getElementById('saveBtn');
-var cancelBtn = document.getElementById('cancelBtn');
-
+var addBtn =     document.getElementById('addBtn');
+var modal =      document.querySelector('.modal');
+var saveBtn =    document.getElementById('saveBtn');
+var cancelBtn =  document.getElementById('cancelBtn');
+var dateInput =  document.getElementById('dateInput');
+var odoInput =   document.getElementById('odoInput');
+var volInput =   document.getElementById('volInput');
+var priceInput = document.getElementById('priceInput');
 var entries = [];
 // boolean to keep track of editing
 var editingIndex = -1;
 
-var dateInput = document.getElementById('dateInput');
-var odoInput = document.getElementById('odoInput');
-var volInput = document.getElementById('volInput');
-var priceInput = document.getElementById('priceInput');
+var App = {
+    init: function(){
+      // debugger;
+    entries = store.getData('mileage');
+    displayEntries();
+    }
+} 
 
 addBtn.addEventListener('click', toggleForm);
 
@@ -39,7 +45,7 @@ saveBtn.addEventListener('click', function(e) {
     entries[editingIndex] = newEntry;
     editingIndex = -1;
   }
-
+ 
   clearInput();
   toggleForm();
   displayEntries();
@@ -91,6 +97,20 @@ function displayEntries() {
     `
     showData.innerHTML += HTMLString;
   }
+  store.setData('mileage', entries);
+}
+
+var store = {
+  getData: function(namespace) {
+    var currentData = localStorage.getItem(namespace);
+    return (currentData && JSON.parse(currentData) || []);
+  },
+  setData: function(namespace, data) {
+    return localStorage.setItem(namespace, JSON.stringify(data));
+  },
+  removeData: function(namespace) {
+    return localStorage.removeItem(namespace);
+  }
 }
 
 // show edit form
@@ -106,6 +126,7 @@ function editEntry (i) {
 
 function deleteEntry(i) {
   entries.splice(i, 1);
+  store.removeData('mileage', entries);  
   displayEntries();
 }
 
@@ -115,3 +136,5 @@ window.addEventListener('click', function(e) {
   toggleForm();
   }
 });
+
+App.init();
